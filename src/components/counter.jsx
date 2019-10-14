@@ -82,7 +82,7 @@ class Counter extends Component {
     const { items } = this.state;
 
     if (items.length === 0) {
-      return <p>There are no items in this list.</p>;
+      return <p>There are no items in your shopping cart.</p>;
     }
 
     return (
@@ -96,6 +96,9 @@ class Counter extends Component {
             </button>
             <button onClick={() => this.handleDecrement(item.id)} className={this.getDecrementClasses(item.id)}>
               Decrement
+            </button>
+            <button onClick={() => this.removeItem(item.id)} className="btn m-2 btn-danger btn-sm">
+              Remove
             </button>
           </li>
         ))}
@@ -125,6 +128,18 @@ class Counter extends Component {
         }
       }
     });
+
+    this.setState({ items: items });
+  };
+
+  removeItem = product => {
+    let { items } = this.state;
+
+    const index = items.findIndex(function(item) {
+      return item.id === product;
+    });
+
+    items.splice(index, 1);
 
     this.setState({ items: items });
   };
