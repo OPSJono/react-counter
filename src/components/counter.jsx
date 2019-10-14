@@ -64,6 +64,20 @@ class Counter extends Component {
     return classes;
   };
 
+  renderTotalCount = () => {
+    const { items } = this.state;
+
+    let count = 0;
+
+    items.forEach(function(value, index) {
+      if (value.count > 0) {
+        count++;
+      }
+    });
+
+    return count;
+  };
+
   renderItems() {
     const { items } = this.state;
 
@@ -119,7 +133,11 @@ class Counter extends Component {
     return (
       <React.Fragment>
         <div className="card card-primary m-5">
-          <div className="card card-header">Shopping Cart</div>
+          <div className="card card-header">
+            <h4>
+              Shopping Cart <span className="badge badge-secondary badge-sm">{this.renderTotalCount()}</span>
+            </h4>
+          </div>
           <div className="card card-body">{this.renderItems()}</div>
         </div>
       </React.Fragment>
