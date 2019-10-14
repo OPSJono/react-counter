@@ -118,8 +118,10 @@ class Counter extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="card card-header">Shopping Cart</div>
-        <div className="card card-body">{this.renderItems()}</div>
+        <div className="card card-primary m-5">
+          <div className="card card-header">Shopping Cart</div>
+          <div className="card card-body">{this.renderItems()}</div>
+        </div>
       </React.Fragment>
     );
   }
